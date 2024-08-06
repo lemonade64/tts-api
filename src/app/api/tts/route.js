@@ -35,6 +35,10 @@ function uint8ArrayToWavBuffer(uint8Array) {
   return Buffer.concat([header, Buffer.from(uint8Array)]);
 }
 
+function wavBufferToBase64(wavBuffer) {
+  return `data:audio/wav;base64,${wavBuffer.toString("base64")}`;
+}
+
 export async function POST(req) {
   if (req.method !== "POST") {
     return NextResponse.json({ error: "POST ONLY" }, { status: 405 });
@@ -49,10 +53,9 @@ export async function POST(req) {
 
     const uint8Array = await text2wav(text, options);
     const wavBuffer = uint8ArrayToWavBuffer(uint8Array);
+    const base64Wav = wavBufferToBase64(wavBuffer);
 
-    const response = {};
-
-    return NextResponse.json({ response: response });
+    return NextResponse.json({ response: base64Wav });
   } catch (error) {
     console.error(error);
     return NextResponse.json(
