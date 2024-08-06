@@ -16,7 +16,7 @@ export const metadata = {
   description:
     "API for converting text to speech (TTS) using a speech synthesiser.",
   category: "technology",
-  metadataBase: new URL(""),
+  // metadataBase: new URL(""),
   openGraph: {
     title: "Amplify",
     description:
@@ -45,10 +45,7 @@ export default function RootLayout({ children }) {
   return (
     <>
       <html lang="en" className={poppins.className}>
-        <body>
-          {children}
-          <Analytics />
-        </body>
+        <body>{children}</body>
       </html>
     </>
   );
