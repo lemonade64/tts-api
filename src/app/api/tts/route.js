@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import text2wav from "text2wav";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
