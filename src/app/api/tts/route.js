@@ -12,6 +12,12 @@ export async function POST(req) {
   try {
     const { text } = await req.json();
 
+    const options = {
+      punct: true,
+    };
+
+    const uint8Array = await text2wav(text, options);
+
     const response = {};
 
     return NextResponse.json({ response: response });
