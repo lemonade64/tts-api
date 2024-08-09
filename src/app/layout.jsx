@@ -16,12 +16,12 @@ export const metadata = {
   description:
     "API for converting text to speech (TTS) using a speech synthesiser.",
   category: "technology",
-  // metadataBase: new URL(""),
+  metadataBase: new URL("https://amplify-tts.vercel.app/"),
   openGraph: {
     title: "Amplify",
     description:
       "API for converting text to speech (TTS) using a speech synthesiser.",
-    url: "",
+    url: "https://amplify-tts.vercel.app/",
     siteName: "TTS API",
     locale: "en_AU",
     type: "website",
