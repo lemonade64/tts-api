@@ -9,6 +9,11 @@ const CHANNELS = 1;
 const BYTES_PER_SAMPLE = 4;
 const WAV_HEADER_SIZE = 44;
 
+/**
+ * Creates a WAV header buffer
+ * @param {number} dataLength - Length of the audio data
+ * @returns {Buffer} WAV header buffer
+ */
 function createWavHeader(dataLength) {
   const buffer = Buffer.alloc(WAV_HEADER_SIZE);
   const fileSize = dataLength + WAV_HEADER_SIZE - 8;
@@ -30,11 +35,21 @@ function createWavHeader(dataLength) {
   return buffer;
 }
 
+/**
+ * Converts Uint8Array to WAV buffer
+ * @param {Uint8Array} uint8Array - Audio data as Uint8Array
+ * @returns {Buffer} WAV buffer
+ */
 function uint8ArrayToWavBuffer(uint8Array) {
   const header = createWavHeader(uint8Array.length);
   return Buffer.concat([header, Buffer.from(uint8Array)]);
 }
 
+/**
+ * Converts WAV buffer to base64 string
+ * @param {Buffer} wavBuffer - WAV buffer
+ * @returns {string} base64 encoded WAV data
+ */
 function wavBufferToBase64(wavBuffer) {
   return `data:audio/wav;base64,${wavBuffer.toString("base64")}`;
 }
